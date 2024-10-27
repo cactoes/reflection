@@ -1,0 +1,171 @@
+.frame {
+    /* padding: 8px; */
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    position: relative;
+    align-items: flex-start;
+}
+
+.frame > .content {
+    width: 100%;
+    /* height: fit-content; */
+    height: 100%;
+    padding: 8px;
+
+    flex-grow: 1;
+    overflow-y : auto;
+    background-color: var(--background-primary);
+    
+    display: flex;
+    flex-direction: column;
+}
+
+.frame.h > .content {
+    flex-direction: row;
+}
+
+.frame.h > .content > div:not(:first-of-type) {
+    margin-left: 8px;
+}
+
+.frame.v > .content {
+    flex-direction: column;
+}
+
+.frame.v > .content > div:not(:first-of-type) {
+    margin-top: 8px;
+}
+
+.frame.ha > .content {
+    align-items: center;
+}
+
+.frame.va > .content {
+    justify-content: center;
+}
+
+.frame.ac > .content {
+    align-items: center;
+    justify-content: center;
+}
+
+/* .frame > .content > div {
+    z-index: 2;
+} */
+
+.frame > .tab_header {
+    display: none;
+}
+
+.frame.size-max {
+    height: 100%;
+}
+
+.frame.hidden {
+    display: none;
+}
+
+.frame.tab {
+    flex-direction: column;
+    height: 100%;
+    padding: 8px;
+}
+
+.frame.tab > .tab_header {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    z-index: 1;
+}
+
+.frame.tab > .tab_header > p {
+    border-top: 2px solid var(--trim);
+    border-left: 2px solid var(--trim);
+    border-right: 2px solid var(--background-secondary);
+    padding: 4px 16px;
+    background-color: var(--background-primary);
+    font-size: var(--font-size-sm);
+
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+
+    position: relative;
+    cursor: pointer;
+    user-select: none;
+}
+
+.frame.tab > .tab_header > p.active {
+    z-index: 2;
+}
+
+.frame.tab > .tab_header > p.active::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 2px;
+    z-index: 3;
+    width: calc(100%);
+    margin-bottom: -2px;
+    background-color: var(--background-primary);
+
+    border-right: 2px solid var(--background-secondary);
+}
+
+.frame.tab > .tab_header > p:first-child:not(.active) {
+    border-bottom-left-radius: 4px;
+}
+
+.frame.bordered > .content {
+    border-top: 2px solid var(--trim);
+    border-left: 2px solid var(--trim);
+    border-right: 2px solid var(--background-secondary);
+    border-bottom: 2px solid var(--background-secondary);
+}
+
+.frame.tab > .content {
+    border-top: 2px solid var(--trim);
+    border-left: 2px solid var(--trim);
+    border-right: 2px solid var(--background-secondary);
+    border-bottom: 2px solid var(--background-secondary);
+
+    padding: 8px;
+}
+
+.frame.outline {
+    padding: 8px;
+    border: 1px solid var(--trim);
+}
+
+.frame.outline > .content {
+    padding: 8px;
+}
+
+.frame.outline::before {
+    content: "";
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: 0px;
+    bottom: 0px;
+    border: 1px solid var(--trim-alt);
+    border-radius: 2px;
+}
+
+.frame > span {
+    position: absolute;
+    top: -9px;
+    font-size: var(--font-size-sm);
+    background-color: var(--background-primary);
+    border-left: 4px solid var(--background-primary);
+    border-right: 4px solid var(--background-primary);
+}
+
+.frame.tab > .content > .frame {
+    padding: 0px;
+}
+
+.frame.tab > .content > .frame > .content {
+    padding: 8px;
+}

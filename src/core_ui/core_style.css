@@ -1,0 +1,194 @@
+* {
+    margin: 0;
+    border: 0;
+    padding: 0;
+
+    box-sizing: border-box;
+
+    font-family: 'MS Sans Serif';
+    /* font-family: 'Segoe UI'; */
+
+    outline: none;
+    color: var(--text);
+    letter-spacing: 1px;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing : none;
+    --font-size-sm: 13px
+}
+
+:root {
+    --text: #0B0C07;
+    --text-secondary: #222222;
+    --background-primary: #B8B8B8;
+    --background-secondary: #292929;
+    --trim: #E9E9E9;
+    --trim-second: #cccccc;
+    --trim-alt: #7d7d7d;
+
+    --primary: #7c72b3;
+    --primary-light: hsl(from var(--primary) h s calc(l + 10));
+    --primary-dark: hsl(from var(--primary) h s calc(l - 10));
+    /* --accent: #95abc9; */
+}
+
+::-webkit-scrollbar {
+    width: 15px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: var(--trim-second); 
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--background-primary);
+
+    border-top: 2px solid var(--trim);
+    border-left: 2px solid var(--trim);
+    border-right: 2px solid var(--background-secondary);
+    border-bottom: 2px solid var(--background-secondary);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    cursor: pointer;
+}
+
+::selection {
+    background: var(--primary);
+}
+
+.drag {
+    --webkit-app-region: drag;
+}
+
+.nodrag {
+    --webkit-app-region: none;
+}
+
+.noselect {
+    user-select: none;
+}
+
+.no_overflow {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+
+    border-top: 2px solid var(--trim);
+    border-left: 2px solid var(--trim);
+    border-right: 2px solid var(--background-secondary);
+    border-bottom: 2px solid var(--background-secondary);
+}
+
+#header {
+    width: 100%;
+    height: 26px;
+
+    background: linear-gradient(45deg, var(--primary-dark), var(--primary-light));
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#header > .title {
+    flex-grow: 1;
+    height: 100%;
+    overflow: hidden;
+}
+
+#header > .title > #title {
+    font-size: var(--font-size-sm);
+    max-width: calc(100% - (19px + 8px));
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: var(--trim);
+}
+
+#header > .title > div {
+    width: 19px;
+    height: 19px;
+    margin-right: 4px;
+    margin-left: 4px;
+}
+
+#header > .title > div > img {
+    width: 100%;
+    height: 100%;
+}
+
+#header > div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#header > .buttons {
+    width: 64px;
+    height: 100%;
+    justify-content: flex-end;
+}
+
+#header > .buttons > button {
+    position: relative;
+
+    width: 19px;
+    height: 19px;
+
+    margin-right: 4px;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    background-color: var(--background-primary);
+
+    transition: all .15s ease;
+
+    border-top: 2px solid var(--trim);
+    border-left: 2px solid var(--trim);
+    border-right: 2px solid var(--background-secondary);
+    border-bottom: 2px solid var(--background-secondary);
+}
+
+#header > .buttons > button:hover {
+    cursor: pointer;
+}
+
+#header > .buttons > button:active {
+    border-right: 2px solid var(--trim);
+    border-bottom: 2px solid var(--trim);
+    border-left: 2px solid var(--background-secondary);
+    border-top: 2px solid var(--background-secondary);
+}
+
+#header > .buttons > button:not(:active):focus-visible:after {
+    content: "";
+    border: 1px dotted var(--background-secondary);
+    border-radius: 3px;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+#header > .buttons > button > img {
+    position: relative;
+    /* left: -1px; */
+}
+
+#main {
+    width: 100%;
+    height: calc(100% - 26px);
+
+    background-color: var(--background-primary);
+}

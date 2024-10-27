@@ -1,0 +1,55 @@
+.button {
+    position: relative;
+    display: inline-block;
+}
+
+.button.button.full-width {
+    width: 100%;
+}
+
+.button.full-width > button {
+    width: 100%;
+}
+
+.button > button {
+    border-top: 2px solid var(--trim);
+    border-left: 2px solid var(--trim);
+    border-right: 2px solid var(--background-secondary);
+    border-bottom: 2px solid var(--background-secondary);
+    
+    outline: none;
+    padding: 4px 16px;
+    transition: all .15s ease;
+    font-size: var(--font-size-sm);
+    background-color: var(--background-primary);
+}
+
+.button > button:hover:not(:disabled) {
+    cursor: pointer;
+}
+
+.button > button:active:not(:disabled) {
+    border-right: 2px solid var(--trim);
+    border-bottom: 2px solid var(--trim);
+    border-left: 2px solid var(--background-secondary);
+    border-top: 2px solid var(--background-secondary);
+}
+
+.button > button:disabled {
+    color: var(--trim-alt);
+    text-shadow: 1px 1px 0 var(--trim);
+    cursor: default;
+}
+
+/* .button > button:not(:active):focus-visible:after {
+    content: "";
+    border: 1px dotted var(--background-secondary);
+    border-radius: 3px;
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    padding: 4px 16px;
+    width: calc(100% - 8px);
+    height: calc(100% - 8px);
+    box-sizing: border-box;
+} */

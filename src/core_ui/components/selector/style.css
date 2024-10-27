@@ -1,0 +1,90 @@
+.selector {
+    position: relative;
+}
+
+.selector > .header {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    border-top: 2px solid var(--background-secondary);
+    border-left: 2px solid var(--background-secondary);
+    border-right: 2px solid var(--trim);
+    border-bottom: 2px solid var(--trim);
+
+    background-color: var(--trim);
+}
+
+.selector > .header > .active-item {
+    font-size: var(--font-size-sm);
+    padding: 2px 6px;
+    
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    max-width: calc(100% - 24px);
+}
+
+.selector > .header > .dropdown {
+    width: 23px;
+    height: 23px;
+    position: relative;
+    border-top: 2px solid var(--trim);
+    border-left: 2px solid var(--trim);
+    border-right: 2px solid var(--background-secondary);
+    border-bottom: 2px solid var(--background-secondary);
+    background-color: var(--background-primary);
+}
+
+.selector > .header > .dropdown:hover {
+    cursor: pointer;
+}
+
+.selector > .header > .dropdown::after {
+    position: absolute;
+    content: "";
+    width: 0;
+    height: 0;
+    left: calc(50% - 5px);
+    top: calc(50% - 2.5px);
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid var(--background-secondary);
+}
+
+.selector > .content {
+    display: none;
+    z-index: 1;
+}
+
+.selector > .content > p {
+    font-size: var(--font-size-sm);
+    background-color: var(--trim);
+    cursor: pointer;
+    padding: 2px 6px;
+    transition: all .15s ease;
+    border: 1px dotted var(--trim);
+}
+
+.selector > .content > p.active,
+.selector > .content > p:hover {
+    background-color: var(--primary);
+    color: var(--trim);
+    border: 1px dotted var(--trim);
+}
+
+.selector > .content.active {
+    display: flex;
+    flex-direction: column;
+    border: 2px solid var(--background-secondary);
+    
+    /* 15 for text + 4 for padding * 7 items */
+    max-height: calc(19px * 7 + 4px);
+    overflow-y: auto;
+
+    position: absolute;
+    width: 100%;
+}

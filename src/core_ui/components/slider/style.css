@@ -1,0 +1,63 @@
+.slider {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.slider > .content > .ticks {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 4px;
+    padding: 0px 5px;
+}
+
+.slider > .content > .ticks > .tick {
+    width: 1px;
+    height: 8px;
+    background-color: var(--trim-alt);
+}
+
+.slider > .content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.slider > p {
+    font-size: var(--font-size-sm);
+}
+
+.slider > p.left {
+    margin-right: 4px;
+}
+
+.slider > p.right {
+    margin-left: 4px;
+}
+
+.slider > .content > input {
+    appearance: none;
+    width: 100%;
+    height: 2px;
+    background-color: var(--background-secondary);
+    border-top: 2px solid var(--background-secondary);
+    border-left: 2px solid var(--background-secondary);
+    border-right: 2px solid var(--trim);
+    border-bottom: 2px solid var(--trim);
+    outline: none;
+    cursor: pointer;
+}
+
+.slider > .content > input::-webkit-slider-thumb {
+    position: relative;
+    -webkit-appearance: none;
+    width: 7px;
+    height: 16px;
+    background-color: var(--background-primary);
+    border-top: 2px solid var(--trim);
+    border-left: 2px solid var(--trim);
+    border-right: 2px solid var(--background-secondary);
+    border-bottom: 2px solid var(--background-secondary);
+    cursor: pointer;
+}
