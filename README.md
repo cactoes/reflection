@@ -1,6 +1,6 @@
 <h1>Reflection -UI</h1>
 Reflection -UI is a c++20 desktop application library. It offers an c++ api to add visual elements to a window.
-Internally it uses the WebView2 browser to renderer UI components.
+Internally it uses the WebView2 browser to renderer UI components. <br>
 
 > [!NOTE]
 > This project is currently only supported on windows. WebView2 is not cross-platform.
@@ -21,8 +21,9 @@ Copy the wil folder direcly into the include folder of the wil dependency.
 <h2>How to compile when included</h2>
 Just link the .lib of either the debug or release depending on your target and link the header files that come included, no extra libraries needed.
 
-<h2>CMake using mvc</h2>
-```pwsh
+<h2>CMake using MSVC</h2>
+
+```powershell
 mkdir build
 cd build
 cmake .. -G "Visual Studio 17 2022" -A x64
