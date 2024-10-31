@@ -80,6 +80,10 @@ int WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
     auto tab_1 = main_frame->add_frame("Tab 1");
     main_frame->add_frame("Tab 2");
 
+    tab_1
+        ->add_frame("Test overflow frame", { .overflow = true })
+        ->add_selector("selector", std::vector<std::string>{ "Option 1", "Option 2", "Option 3" }, std::vector<int>{ 0 });
+
     auto sub_frame1 = tab_1->add_frame("Sub frame 1", { .max_size = true });
     sub_frame1->add_checkbox("Checkbox", false, [](auto, bool state) { std::cout << "state: " << (state ? "checked" : "unchecked") << "\n"; });
     sub_frame1->add_checkbox("Checkbox", true, [](auto, bool state) { std::cout << "state: " << (state ? "checked" : "unchecked") << "\n"; });

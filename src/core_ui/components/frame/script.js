@@ -2,12 +2,12 @@
  * @param {HTMLDivElement} parent
  * @param {HTMLDivElement} template
  * @param {string} name
- * @param {[ boolean, boolean, number, boolean, number ]} options
+ * @param {[ boolean, boolean, number, boolean, number, boolean ]} options
  */
 create_functions["frame"] = function (parent, template, name, options) {
     const layout_map = [ "h", "v" ];
     const align_map = [ "", "ha", "va", "ac" ];
-    const [ is_tab_list, outline, layout_index, max_size, align_index ] = options;
+    const [ is_tab_list, outline, layout_index, max_size, align_index, overflow ] = options;
     const parent_is_tab_list = parent.classList.contains("tab");
 
     if (is_tab_list) {
@@ -26,6 +26,9 @@ create_functions["frame"] = function (parent, template, name, options) {
 
     if (max_size)
         template.classList.add("size-max");
+
+    if (overflow)
+        template.classList.add("overflow");
 
     if (parent_is_tab_list) {
         // get tab list header from parent

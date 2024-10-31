@@ -33,6 +33,7 @@ namespace reflection::component {
         frame_layout_t layout = frame_layout_t::fl_vertical;
         bool max_size = false;
         frame_align_t align = frame_align_t::fa_none;
+        bool overflow = false;
     };
 
     class abstract_frame : public abstract_component {

@@ -7,6 +7,10 @@
     align-items: flex-start;
 }
 
+.frame.overflow > .content {
+    overflow: visible;
+}
+
 .frame > .content {
     width: 100%;
     /* height: fit-content; */
