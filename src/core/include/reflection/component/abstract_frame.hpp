@@ -34,6 +34,7 @@ namespace reflection::component {
         bool max_size = false;
         frame_align_t align = frame_align_t::fa_none;
         bool overflow = false;
+        bool border = true;
     };
 
     class abstract_frame : public abstract_component {

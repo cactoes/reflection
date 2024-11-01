@@ -19,7 +19,7 @@ namespace reflection::component {
         virtual int get_value() const = 0;
     };
 
-    typedef ru_function<void, const abstract_slider*, int> slider_callback_t;
+    typedef ru_function<void, abstract_slider*, int> slider_callback_t;
 } // namespace reflection::component
 
 #endif // __REFLECTION_ABSTRACT_SLIDER_HPP__

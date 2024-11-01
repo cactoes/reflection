@@ -21,7 +21,7 @@ namespace reflection::component {
         input_options_t m_options {};
     };
 
-    typedef ru_function<std::string, const abstract_input*, const std::string&> input_callback_t;
+    typedef ru_function<std::string, abstract_input*, const std::string&> input_callback_t;
 } // namespace reflection::component
 
 #endif // __REFLECTION_ABSTRACT_INPUT_HPP__

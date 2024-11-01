@@ -11,7 +11,7 @@ namespace reflection::component {
         virtual ~abstract_image() = default;
     };
 
-    typedef ru_function<void, const abstract_image*> image_callback_t;
+    typedef ru_function<void, abstract_image*> image_callback_t;
 } // namespace reflection::component
 
 #endif // __REFLECTION_ABSTRACT_IMAGE_HPP__

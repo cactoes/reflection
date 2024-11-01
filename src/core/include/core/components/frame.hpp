@@ -68,7 +68,7 @@ namespace reflection::component {
         }
 
         void render() override {
-            m_browser->call_function("create_ui_component", { "frame", m_target_id, m_id, m_name, std::vector<std::any>{ m_options.is_tab_list, m_options.outline, (int)m_options.layout, m_options.max_size, (int)m_options.align, m_options.overflow } });
+            m_browser->call_function("create_ui_component", { "frame", m_target_id, m_id, m_name, std::vector<std::any>{ m_options.is_tab_list, m_options.outline, (int)m_options.layout, m_options.max_size, (int)m_options.align, m_options.overflow, m_options.border } });
             for (const auto& component : m_components)
                 component->render();
         }

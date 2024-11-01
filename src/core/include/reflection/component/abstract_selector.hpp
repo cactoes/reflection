@@ -20,7 +20,7 @@ namespace reflection::component {
         selector_options_t m_options {};
     };
 
-    typedef ru_function<void, const abstract_selector*, std::vector<int>> selector_callback_t;
+    typedef ru_function<void, abstract_selector*, std::vector<int>> selector_callback_t;
 } // namespace reflection::component
 
 #endif // __REFLECTION_ABSTRACT_SELECTOR_HPP__

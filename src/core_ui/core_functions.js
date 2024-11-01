@@ -40,6 +40,25 @@ document.addEventListener("mouseup", () => {
     }
 });
 
+document.addEventListener("click", (event) => {
+    // close selector when not clicking in selector or on other selector
+    if (!event.target.parentElement.parentElement.classList.contains("selector")) {
+        for (const element of document.querySelectorAll(".selector>div.content.active")) {
+            if (event.target.classList.contains("header")) {
+                if (event.target.parentElement.parentElement.querySelector(".selector>div.content.active") != element)
+                    element.classList.remove("active");
+            } else {
+                element.classList.remove("active");
+            }
+        }
+    } else {
+        for (const element of document.querySelectorAll(".selector>div.content.active")) {
+            if (event.target.parentElement.parentElement.querySelector(".selector>div.content.active") != element)
+                element.classList.remove("active");
+        }
+    }
+})
+
 document.addEventListener("keydown", e => (e.key == "F5") && e.preventDefault());
 
 for (const button of document.getElementsByClassName("we_button")) {

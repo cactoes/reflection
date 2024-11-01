@@ -21,7 +21,7 @@ namespace reflection::component {
         button_options_t m_options {};
     };
 
-    typedef ru_function<void, const abstract_button*> button_callback_t;
+    typedef ru_function<void, abstract_button*> button_callback_t;
 } // namespace reflection::component
 
 #endif // __REFLECTION_ABSTRACT_BUTTON_HPP__

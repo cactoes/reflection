@@ -11,11 +11,15 @@
     overflow: visible;
 }
 
+.frame.border > .content {
+    padding: 8px;
+}
+
 .frame > .content {
     width: 100%;
     /* height: fit-content; */
     height: 100%;
-    padding: 8px;
+    /* padding: 8px; */
 
     flex-grow: 1;
     overflow-y : auto;

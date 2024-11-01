@@ -13,7 +13,7 @@ namespace reflection::component {
         virtual std::string get_path() const = 0;
     };
 
-    typedef ru_function<void, const abstract_folder_selector*, std::string> folder_selector_callback_t;
+    typedef ru_function<void, abstract_folder_selector*, std::string> folder_selector_callback_t;
 } // namespace reflection::component
 
 

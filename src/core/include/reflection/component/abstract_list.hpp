@@ -13,7 +13,7 @@ namespace reflection::component {
         virtual void set_items(const std::vector<std::string>&) = 0;
     };
 
-    typedef ru_function<void, const abstract_list*, int> list_callback_t;
+    typedef ru_function<void, abstract_list*, int> list_callback_t;
 } // namespace reflection::component
 
 #endif // __REFLECTION_ABSTRACT_LIST_HPP__
