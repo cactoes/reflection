@@ -56,7 +56,7 @@ namespace reflection::component {
         std::enable_if_t<std::is_base_of_v<abstract_component, Ty>, std::optional<std::shared_ptr<Ty>>>
         get_component(const std::string& id) {
             for (auto& component : m_components)
-                if (component->m_id == id)
+                if (component->get_id() == id)
                     return std::static_pointer_cast<Ty>(component);
 
             return std::nullopt;

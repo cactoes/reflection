@@ -30,6 +30,10 @@ namespace reflection::component {
             render();
         }
 
+        const std::string& get_id() const {
+            return m_id;
+        }
+
     protected:
         std::string m_name {};
         std::string m_target_id {};
