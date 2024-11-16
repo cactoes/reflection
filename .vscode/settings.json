@@ -79,6 +79,9 @@
         "valarray": "cpp",
         "codecvt": "cpp",
         "random": "cpp",
-        "fstream": "cpp"
+        "fstream": "cpp",
+        "*.rh": "cpp",
+        "complex": "cpp",
+        "cstdarg": "cpp"
     }
 }

@@ -14,6 +14,7 @@ set(DEPENDENCY_DIR ${CMAKE_CURRENT_SOURCE_DIR}/dependencies)
 file(GLOB ALL_DEPENDENCY_INCLUDES "${DEPENDENCY_DIR}/*/include")
 
 option(BUILD_EXAMPLE "build example" ON)
+option(BUILD_C_API "build c api" ON)
 
 # -- compiler stuff
 
@@ -32,4 +33,8 @@ add_subdirectory(src/core)
 
 if (BUILD_EXAMPLE)
     add_subdirectory(src/example)
+endif()
+
+if (BUILD_C_API)
+    add_subdirectory(src/core_c_api)
 endif()
