@@ -13,6 +13,7 @@
 #include "abstract_image.hpp"
 #include "abstract_folder_selector.hpp"
 #include "abstract_list.hpp"
+#include "abstract_canvas.hpp"
 
 namespace reflection::component {
     enum frame_layout_t {
@@ -51,6 +52,7 @@ namespace reflection::component {
         virtual std::optional<std::shared_ptr<abstract_image>> add_image(const std::string& filepath, int width, int height, const image_callback_t& callback = {}) = 0;
         virtual std::optional<std::shared_ptr<abstract_folder_selector>> add_folder_selector(const std::string& name, const std::string& default_path, const folder_selector_callback_t& callback = {}) = 0;
         virtual std::optional<std::shared_ptr<abstract_list>> add_list(const std::string& name, const std::vector<std::string>& active_items, const list_callback_t& callback = {}) = 0;
+        virtual std::optional<std::shared_ptr<abstract_canvas>> add_canvas(const std::string& name, int width, int height, std::vector<uint32_t>* buffer) = 0;
 
         template <typename Ty>
         std::enable_if_t<std::is_base_of_v<abstract_component, Ty>, std::optional<std::shared_ptr<Ty>>>

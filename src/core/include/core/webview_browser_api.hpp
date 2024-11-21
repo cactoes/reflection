@@ -72,7 +72,7 @@ public:
 private:
     template <typename Ty>
     std::string typed_to_string(const Ty& value) {
-        if constexpr (std::is_same_v<Ty, int> || std::is_same_v<Ty, float> || std::is_same_v<Ty, bool> || std::is_same_v<Ty, uint8_t>)
+        if constexpr (std::is_same_v<Ty, int> || std::is_same_v<Ty, float> || std::is_same_v<Ty, bool> || std::is_same_v<Ty, uint8_t> || std::is_same_v<Ty, uint32_t>)
             return std::to_string(value);
         else if constexpr (std::is_same_v<Ty, char*> || std::is_same_v<Ty, const char*>)
             return "\"" + std::string(value) + "\"";
@@ -111,6 +111,7 @@ private:
         if (argument_type == typeid(std::string))               return typed_to_string(std::any_cast<std::string>(argument));
 
         if (argument_type == typeid(std::vector<uint8_t>))      return typed_to_string(std::any_cast<std::vector<uint8_t>>(argument));
+        if (argument_type == typeid(std::vector<uint32_t>))     return typed_to_string(std::any_cast<std::vector<uint32_t>>(argument));
         if (argument_type == typeid(std::vector<int>))          return typed_to_string(std::any_cast<std::vector<int>>(argument));
         if (argument_type == typeid(std::vector<float>))        return typed_to_string(std::any_cast<std::vector<float>>(argument));
         if (argument_type == typeid(std::vector<bool>))         return typed_to_string(std::any_cast<std::vector<bool>>(argument));

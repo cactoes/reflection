@@ -12,6 +12,7 @@
 #include "image.hpp"
 #include "folder_selector.hpp"
 #include "list.hpp"
+#include "canvas.hpp"
 
 #include "../../reflection/component/abstract_frame.hpp"
 #include "../../reflection/utils.hpp"
@@ -65,6 +66,10 @@ namespace reflection::component {
 
         std::optional<std::shared_ptr<abstract_list>> add_list(const std::string& name, const std::vector<std::string>& active_items, const list_callback_t& callback) override {
             return add_component<abstract_list, list>(m_browser, m_id, name, active_items, callback);
+        }
+
+        std::optional<std::shared_ptr<abstract_canvas>> add_canvas(const std::string& name, int width, int height, std::vector<uint32_t>* buffer) override {
+            return add_component<abstract_canvas, canvas>(m_browser, m_id, name, width, height, buffer);
         }
 
         void render() override {

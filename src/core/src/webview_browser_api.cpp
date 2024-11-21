@@ -182,6 +182,9 @@ void webview_browser_api::execute_event(const browser_event_t& event) {
     if (m_thread_created_id != std::this_thread::get_id() && REFLECTION_DBG)
         std::cerr << "[reflection::webview_browser_api] thread mismatch! unable to call function: \"" <<  event.name << "\"\n";
 
+    if (!m_webview2)
+        return;
+
     auto script = m_browser_interface.create_function_call(event);
     m_webview2->ExecuteScript(ru_str_to_wstr(script).c_str(), nullptr);
     //  m_webview2->PostWebMessageAsJson();

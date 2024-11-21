@@ -71,10 +71,6 @@ int WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
     options.is_tab_list = true;
     reflection::browser_window window(create_window("Test window"), options);
 
-    window.register_event_handler(reflection::E_ON_RENDER_FINISHED, [](auto) {
-        std::cout << "render is finished\n";
-    });
-
     auto main_frame = window.get_frame();
 
     auto tab_1 = main_frame->add_frame("Tab 1");
@@ -111,6 +107,19 @@ int WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
     tab_1->add_input("default value", [](auto, const std::string& v) { std::cout << "input: " << v << "\n"; return v; });
     tab_1->add_input("default value", [](auto, const std::string& v) { std::cout << "input: " << v << "\n"; return v; }, { .submit_button_text = "Submit" });
     tab_1->add_list("List", std::vector<std::string>{ "item1", "item2", "item3", "item4", "item5", "item6", "item7", "item8" }, [](auto, int v) { std::cout << "clicked item: " << v << "\n"; });
+
+    std::vector<uint32_t> data(800 * 480);
+    auto canvas_frame = tab_1->add_frame("", { .outline = true, .align = reflection::component::fa_center });
+    auto canvas = canvas_frame->add_canvas("canvas", 800, 480, &data).value();
+
+    for (int i = 0; i < 800 * 480; i++)
+        data.at(i) = 0xff000000 | (uint32_t)(sin(i * 0.0001) * 0xffffff);
+
+
+    window.register_event_handler(reflection::E_ON_RENDER_FINISHED, [canvas](auto) {
+        std::cout << "render is finished\n";
+        canvas->update_buffer();
+    });
 
     window.start();
 

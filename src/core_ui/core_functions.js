@@ -154,6 +154,16 @@ async function __core_post_we__(we, ...args) {
 // SECTION: ui functions
 // ====================
 const create_functions = {};
+const update_functions = {};
+const canvas_renders = [];
+const canvas_buffers = {};
+
+function render_canvas_loop() {
+    for (const canvas_render of canvas_renders)
+        canvas_render();
+
+    requestAnimationFrame(render_canvas_loop);
+}
 
 function parse_args(args) {
     return args.map((item, index) => { return { [`a${index}`]: JSON.stringify(item) } });
@@ -164,6 +174,30 @@ function fromat_args(base,  target, id, name, args) {
     return Object.keys(args).map(item => {
         return `\n${Array.from({ length: base - item.length }).join(" ")}${item}: ${args[item]}`;
     });
+}
+
+async function update_ui_component_data(type, id, ...args) {
+    if (update_functions[type] == undefined) {
+        if (IS_DEV)
+            console.error(`ui component update "${type}" not registered`);
+        return;
+    }
+
+    if (!document.getElementById(id)) {
+        if (IS_DEV)
+            console.error(`target "${id}" not found`);
+        return;
+    }
+
+    const item = document.getElementById(id);
+
+    try {
+        await update_functions[type].apply(null, [ id, item, ...args ]);
+    } catch (error) {
+        if (IS_DEV)
+            console.error(error);
+        return;
+    }
 }
 
 async function create_ui_component(type, target, id, name, ...args) {
@@ -190,7 +224,7 @@ async function create_ui_component(type, target, id, name, ...args) {
 
     // add functionality
     try {
-        await create_functions[type]?.apply(null, [ target_element, item, name, ...args ]);
+        await create_functions[type].apply(null, [ target_element, item, name, ...args ]);
     } catch (error) {
         if (IS_DEV)
             console.error(error);
@@ -212,7 +246,11 @@ async function create_ui_component(type, target, id, name, ...args) {
 }
 
 register(create_ui_component);
+register(update_ui_component_data);
 register(__set_icon_wrapper__);
 register(__set_title_wrapper__);
 register(__set_color_wrapper__);
-invoke("render_layout", []).then(() => invoke("on_render_finished", []));
+invoke("render_layout", []).then(() => {
+    invoke("on_render_finished", []);
+    render_canvas_loop();
+});
